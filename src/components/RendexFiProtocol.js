@@ -4,7 +4,7 @@ import { ArrowDownUp, Wallet, TrendingUp, RefreshCw, Settings, Sun, Moon } from 
 // Multi Wallet Provider Detection and Connection
 const getProvider = () => {
 // Try Phantom first
-if (‘phantom’ in window && window.phantom?.solana?.isPhantom) {
+if ('phantom' in window && window.phantom?.solana?.isPhantom) {
 return { provider: window.phantom.solana, name: 'Phantom' };
 }
 
