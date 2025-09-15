@@ -73,10 +73,10 @@ try {
   const resp = await walletProvider.provider.connect();
   setPublicKey(resp.publicKey.toString());
   setConnected(true);
-  console.log(`Connected to ${walletProvider.name}:`, resp.publicKey.toString());
+  console.log('Connected to ${walletProvider.name}:', resp.publicKey.toString());
 } catch (err) {
   console.error('Connection failed:', err);
-  alert(`Verbindung zu ${walletProvider?.name || 'Wallet'} fehlgeschlagen!`);
+  alert('Verbindung zu ${walletProvider?.name || 'Wallet'} fehlgeschlagen!');
 }
 ```
 
@@ -89,10 +89,10 @@ try {
 await provider.disconnect();
 setConnected(false);
 setPublicKey(null);
-setWalletName(’’);
-console.log(‘Disconnected from wallet’);
+setWalletName('');
+console.log('Disconnected from wallet');
 } catch (err) {
-console.error(‘Disconnect failed:’, err);
+console.error('Disconnect failed:', err);
 }
 }
 };
@@ -101,21 +101,21 @@ console.error(‘Disconnect failed:’, err);
 const [portfolio, setPortfolio] = useState([]);
 
 const tokens = [
-{ symbol: ‘SOL’, name: ‘Solana’, price: 100.00, color: ‘purple’ },
-{ symbol: ‘USDC’, name: ‘USD Coin’, price: 1.00, color: ‘blue’ },
-{ symbol: ‘RAY’, name: ‘Raydium’, price: 0.40, color: ‘green’ },
-{ symbol: ‘ORCA’, name: ‘Orca’, price: 0.90, color: ‘orange’ },
-{ symbol: ‘BONK’, name: ‘Bonk’, price: 0.000015, color: ‘yellow’ }
+{ symbol: 'SOL', name: 'Solana', price: 100.00, color: 'purple' },
+{ symbol: 'USDC', name: 'USD Coin', price: 1.00, color: 'blue' },
+{ symbol: 'RAY', name: 'Raydium', price: 0.40, color: 'green' },
+{ symbol: 'ORCA', name: 'Orca', price: 0.90, color: 'orange' },
+{ symbol: 'BONK', name: 'Bonk', price: 0.000015, color: 'yellow' }
 ];
 
 const handleSwap = () => {
 setIsSwapping(true);
 setTimeout(() => {
 setIsSwapping(false);
-setFromAmount(’’);
-setToAmount(’’);
+setFromAmount('');
+setToAmount('');
 // Simulate successful swap
-alert(‘Swap erfolgreich! 🎉’);
+alert('Swap erfolgreich! 🎉');
 }, 2000);
 };
 
