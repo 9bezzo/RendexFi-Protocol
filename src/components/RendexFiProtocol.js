@@ -27,16 +27,16 @@ return null;
 };
 
 const RendexFiProtocol = () => {
-const [activeTab, setActiveTab] = useState(‘swap’);
+const [activeTab, setActiveTab] = useState('swap');
 const [darkMode, setDarkMode] = useState(true);
 const [connected, setConnected] = useState(false);
 const [publicKey, setPublicKey] = useState(null);
 const [provider, setProvider] = useState(null);
-const [walletName, setWalletName] = useState(’’);
-const [fromToken, setFromToken] = useState(‘SOL’);
-const [toToken, setToToken] = useState(‘USDC’);
-const [fromAmount, setFromAmount] = useState(’’);
-const [toAmount, setToAmount] = useState(’’);
+const [walletName, setWalletName] = useState('');
+const [fromToken, setFromToken] = useState('SOL');
+const [toToken, setToToken] = useState('USDC');
+const [fromAmount, setFromAmount] = useState('');
+const [toAmount, setToAmount] = useState('');
 const [isSwapping, setIsSwapping] = useState(false);
 
 // Initialize wallet connection on component mount
