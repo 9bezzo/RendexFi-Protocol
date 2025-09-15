@@ -276,7 +276,7 @@ const PortfolioInterface = () => (
 </div>
 
 ```
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
   <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-4 rounded-xl border border-purple-400/20">
     <div className="text-sm text-cyan-400 mb-1">Gesamtwert</div>
     <div className="text-2xl font-bold text-cyan-300">$0.00</div>
