@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from ‘react’;
-import { ArrowDownUp, Wallet, TrendingUp, RefreshCw, Settings, Sun, Moon } from ‘lucide-react’;
+import React, { useState, useEffect } from 'react';
+import { ArrowDownUp, Wallet, TrendingUp, RefreshCw, Settings, Sun, Moon } from 'lucide-react';
 
 // Multi Wallet Provider Detection and Connection
 const getProvider = () => {
 // Try Phantom first
 if (‘phantom’ in window && window.phantom?.solana?.isPhantom) {
-return { provider: window.phantom.solana, name: ‘Phantom’ };
+return { provider: window.phantom.solana, name: 'Phantom' };
 }
 
 // Try Solflare
-if (‘solflare’ in window && window.solflare?.isSolflare) {
-return { provider: window.solflare, name: ‘Solflare’ };
+if ('solflare' in window && window.solflare?.isSolflare) {
+return { provider: window.solflare, name: 'Solflare' };
 }
 
 // Try Backpack
-if (‘backpack’ in window && window.backpack?.isBackpack) {
-return { provider: window.backpack, name: ‘Backpack’ };
+if ('backpack' in window && window.backpack?.isBackpack) {
+return { provider: window.backpack, name: 'Backpack' };
 }
 
 // Try Glow
-if (‘glow’ in window && window.glow?.isGlow) {
-return { provider: window.glow, name: ‘Glow’ };
+if ('glow' in window && window.glow?.isGlow) {
+return { provider: window.glow, name: 'Glow' };
 }
 
 return null;
