@@ -308,7 +308,7 @@ const PortfolioInterface = () => (
         {portfolio.map((token, idx) => (
           <div key={idx} className="flex items-center justify-between p-4 bg-black/40 rounded-xl hover:bg-black/60 transition-colors">
             <div className="flex items-center space-x-4">
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${token.color} flex items-center justify-center`}>
+              <div className={'w-12 h-12 rounded-full bg-gradient-to-r ${token.color} flex items-center justify-center'}>
                 <span className="text-white font-bold text-sm">{token.symbol}</span>
               </div>
               <div>
@@ -318,7 +318,7 @@ const PortfolioInterface = () => (
             </div>
             <div className="text-right">
               <div className="text-cyan-300 font-semibold">{token.value}</div>
-              <div className={`text-sm ${token.change.startsWith('+') ? 'text-green-400' : token.change.startsWith('-') ? 'text-red-400' : 'text-cyan-500'}`}>
+              <div className={'text-sm ${token.change.startsWith('+') ? 'text-green-400' : token.change.startsWith('-') ? 'text-red-400' : 'text-cyan-500'}'}>
                 {token.change}
               </div>
             </div>
@@ -345,7 +345,7 @@ const PortfolioInterface = () => (
 );
 
 return (
-<div className={`min-h-screen transition-all duration-500 ${darkMode  ? 'bg-gradient-to-br from-black via-gray-900 to-black'  : 'bg-gradient-to-br from-blue-50 via-white to-cyan-50'}`}>
+<div className={'min-h-screen transition-all duration-500 ${darkMode  ? 'bg-gradient-to-br from-black via-gray-900 to-black'  : 'bg-gradient-to-br from-blue-50 via-white to-cyan-50'}'}>
 
 ```
   {/* Header */}
@@ -363,15 +363,15 @@ return (
         <div className="flex items-center space-x-4">
           <button
             onClick={connected ? disconnectWallet : connectWallet}
-            className={`px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+            className={'px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
               connected 
                 ? 'bg-gradient-to-r from-green-500 to-cyan-400 text-black' 
                 : 'bg-gradient-to-r from-blue-500 to-cyan-400 text-black hover:from-blue-600 hover:to-cyan-500'
-            }`}
+            }'}
           >
             <div className="flex items-center space-x-2">
               <Wallet className="w-4 h-4" />
-              <span>{connected ? `${publicKey?.slice(0,4)}...${publicKey?.slice(-4)}` : 'Wallet verbinden'}</span>
+              <span>{connected ? '${publicKey?.slice(0,4)}...${publicKey?.slice(-4)}' : 'Wallet verbinden'}</span>
             </div>
           </button>
         </div>
@@ -381,22 +381,22 @@ return (
 
   {/* Navigation */}
   <div className="container mx-auto px-4 py-6">
-    <div className={`flex justify-center mb-8`}>
-      <div className={`backdrop-blur-md rounded-2xl p-2 border transition-colors duration-300 ${
+    <div className={'flex justify-center mb-8'}>
+      <div className={'backdrop-blur-md rounded-2xl p-2 border transition-colors duration-300 ${
         darkMode 
           ? 'bg-black/60 border-cyan-500/30' 
           : 'bg-white/60 border-blue-200/50'
-      }`}>
+      }'}>
         <div className="flex space-x-2">
           <button
             onClick={() => setActiveTab('swap')}
-            className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            className={'px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
               activeTab === 'swap'
                 ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-black shadow-lg transform scale-105'
                 : darkMode 
                   ? 'text-cyan-300 hover:text-white hover:bg-cyan-500/20'
                   : 'text-blue-600 hover:text-blue-800 hover:bg-blue-100/50'
-            }`}
+            }'}
           >
             <div className="flex items-center space-x-2">
               <ArrowDownUp className="w-4 h-4" />
@@ -405,13 +405,13 @@ return (
           </button>
           <button
             onClick={() => setActiveTab('portfolio')}
-            className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            className={'px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
               activeTab === 'portfolio'
                 ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-black shadow-lg transform scale-105'
                 : darkMode 
                   ? 'text-cyan-300 hover:text-white hover:bg-cyan-500/20'
                   : 'text-blue-600 hover:text-blue-800 hover:bg-blue-100/50'
-            }`}
+            }'}
           >
             <div className="flex items-center space-x-2">
               <TrendingUp className="w-4 h-4" />
@@ -429,45 +429,45 @@ return (
   </div>
 
   {/* Footer */}
-  <div className={`text-center py-8 transition-colors duration-300 ${
+  <div className={'text-center py-8 transition-colors duration-300 ${
     darkMode ? 'bg-black/20' : 'bg-blue-50/50'
-  }`}>
+  }'}>
     <div className="container mx-auto px-4">
-      <div className={`text-sm mb-4 ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>
+      <div className={'text-sm mb-4 ${darkMode ? 'text-cyan-400' : 'text-blue-600'}'}>
         Powered by RendexFi • DeFi Made Simple
       </div>
-      <div className={`text-xs mb-6 ${darkMode ? 'text-cyan-600' : 'text-blue-500'}`}>
+      <div className={'text-xs mb-6 ${darkMode ? 'text-cyan-600' : 'text-blue-500'}'}>
         ⚡ Schnell • 🔐 Sicher • 🌈 Benutzerfreundlich
       </div>
       
       {/* Theme Toggle in Footer */}
       <div className="flex justify-center items-center space-x-4">
-        <span className={`text-sm ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>
+        <span className={'text-sm ${darkMode ? 'text-cyan-400' : 'text-blue-600'}'}>
           Theme:
         </span>
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+          className={`'relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
             darkMode ? 'bg-cyan-600' : 'bg-blue-300'
-          }`}
+          }'}
         >
           <span
-            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+            className={'inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
               darkMode ? 'translate-x-6' : 'translate-x-1'
-            }`}
+            }'}
           />
         </button>
         <div className="flex items-center space-x-2">
-          <Sun className={`w-4 h-4 ${darkMode ? 'text-cyan-600' : 'text-blue-600'}`} />
-          <span className={`text-xs ${darkMode ? 'text-cyan-600' : 'text-blue-600'}`}>
+          <Sun className={'w-4 h-4 ${darkMode ? 'text-cyan-600' : 'text-blue-600'}'} />
+          <span className={'text-xs ${darkMode ? 'text-cyan-600' : 'text-blue-600'}'}>
             {darkMode ? 'Hell' : 'Dunkel'}
           </span>
-          <Moon className={`w-4 h-4 ${darkMode ? 'text-cyan-400' : 'text-blue-400'}`} />
+          <Moon className={'w-4 h-4 ${darkMode ? 'text-cyan-400' : 'text-blue-400'}'} />
         </div>
       </div>
       
       {/* Supported Wallets */}
-      <div className={`mt-6 text-xs ${darkMode ? 'text-cyan-600' : 'text-blue-500'}`}>
+      <div className={'mt-6 text-xs ${darkMode ? 'text-cyan-600' : 'text-blue-500'}'}>
         Unterstützte Wallets: Phantom • Solflare • Backpack • Glow
       </div>
     </div>
