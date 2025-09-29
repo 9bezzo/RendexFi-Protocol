@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RendexFi Beta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #000814 0%, #001d3d 30%, #003566 60%, #006d77 85%, #2dd4bf 100%);
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .container {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 24px;
+            padding: 60px 40px 45px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+    }
+    .logo {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+    }
+
+    .logo-placeholder {
+        color: #a8a8a8;
+        font-size: 11px;
+        text-align: center;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: 0.5px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 70px;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+
+    .rendex {
+        color: #6b7df6;
+    }
+
+    .fi {
+        color: #2dd4bf;
+    }
+
+    .beta {
+        color: #2dd4bf;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 20px 24px;
+        background: #1f2332;
+        border: none;
+        border-radius: 12px;
+        color: #6b7280;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        font-style: italic;
+    }
+
+    input:focus {
+        outline: none;
+        background: #1a1e2e;
+        color: #8b92a8;
+    }
+
+    input::placeholder {
+        color: #4b5563;
+        font-style: italic;
+    }
+
+    button {
+        width: 100%;
+        padding: 20px;
+        background: #1f2332;
+        border: none;
+        border-radius: 12px;
+        color: #9ca3af;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 25px;
+    }
+
+    button:hover {
+        background: #252938;
+        transform: translateY(-1px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 60px;
+        color: #6b7280;
+        font-size: 11px;
+        font-weight: 400;
+    }
+
+    /* Mobile Optimierung */
+    @media (max-width: 600px) {
+        body {
+            padding: 0;
+            align-items: flex-start;
+            padding-top: 80px;
+        }
+
+        .container {
+            padding: 50px 35px 40px;
+            border-radius: 24px;
+            margin: 0 15px;
+            max-width: 100%;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 40px;
+            border-radius: 16px;
+        }
+
+        .logo-placeholder {
+            font-size: 10px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 60px;
+        }
+
+        input {
+            padding: 18px 22px;
+            font-size: 15px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 18px;
+            font-size: 12px;
+            letter-spacing: 3.5px;
+            border-radius: 10px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 10px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .container {
+            padding: 45px 30px 35px;
+            margin: 0 12px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+        }
+    }
+
+    /* Desktop große Bildschirme */
+    @media (min-width: 1024px) {
+        .container {
+            max-width: 450px;
+            padding: 70px 45px 50px;
+        }
+
+        h1 {
+            font-size: 52px;
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            width: 95px;
+            height: 95px;
+            margin-bottom: 50px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./rendex_logo.PNG" alt="Logo" class="logo">
+        </div>
+    <h1>
+        <span class="rendex">Rendex</span><span class="fi">Fi</span> <span class="beta">Beta</span>
+    </h1>
+    <form>
+        <div class="input-group">
+            <input type="email" placeholder="deine@gmail.com" required>
+        </div>
+        
+        <button type="submit">ZUGRIFF</button>
+    </form>
+    
+    <div class="footer">
+        2025 RendexFi. Alle Rechte vorbehalten
+    </div>
+</div>
+</body>
+</html>
