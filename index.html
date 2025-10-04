@@ -4,239 +4,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RendexFi Beta</title>
+    <title>RendexFi | Swap & Portfolio Hub</title>
     <style>
+        :root {
+            color-scheme: dark;
+            --bg-gradient: radial-gradient(circle at top left, rgba(46, 221, 191, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at bottom right, rgba(123, 97, 255, 0.18) 0%, transparent 50%),
+                linear-gradient(135deg, #05060f 0%, #020713 40%, #060519 80%, #03020f 100%);
+            --glass: rgba(8, 11, 29, 0.72);
+            --glass-soft: rgba(14, 18, 38, 0.72);
+            --primary: #2dd4bf;
+            --secondary: #6b7df6;
+            --accent: #00f5ff;
+            --text-strong: #f8fafc;
+            --text-soft: #cbd5f5;
+            --text-muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.08);
+            --shadow: 0 32px 64px rgba(4, 8, 28, 0.55);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #000814 0%, #001d3d 30%, #003566 60%, #006d77 85%, #2dd4bf 100%);
-        padding: 0;
-        overflow-x: hidden;
-    }
-    .container {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 24px;
-            padding: 60px 40px 45px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            margin: 20px;
-    }
-    .logo {
-        width: 90px;
-        height: 90px;
-        margin: 0 auto 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 18px;
-    }
-
-    .logo-placeholder {
-        color: #a8a8a8;
-        font-size: 11px;
-        text-align: center;
-        font-weight: 500;
-        line-height: 1.4;
-        letter-spacing: 0.5px;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 70px;
-        letter-spacing: -1px;
-        line-height: 1.1;
-    }
-
-    .rendex {
-        color: #6b7df6;
-    }
-
-    .fi {
-        color: #2dd4bf;
-    }
-
-    .beta {
-        color: #2dd4bf;
-    }
-
-    .input-group {
-        margin-bottom: 20px;
-    }
-
-    input {
-        width: 100%;
-        padding: 20px 24px;
-        background: #1f2332;
-        border: none;
-        border-radius: 12px;
-        color: #6b7280;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        font-style: italic;
-    }
-
-    input:focus {
-        outline: none;
-        background: #1a1e2e;
-        color: #8b92a8;
-    }
-
-    input::placeholder {
-        color: #4b5563;
-        font-style: italic;
-    }
-
-    button {
-        width: 100%;
-        padding: 20px;
-        background: #1f2332;
-        border: none;
-        border-radius: 12px;
-        color: #9ca3af;
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 25px;
-    }
-
-    button:hover {
-        background: #252938;
-        transform: translateY(-1px);
-    }
-
-    button:active {
-        transform: translateY(0);
-    }
-
-    .footer {
-        text-align: center;
-        margin-top: 60px;
-        color: #6b7280;
-        font-size: 11px;
-        font-weight: 400;
-    }
-
-    /* Mobile Optimierung */
-    @media (max-width: 600px) {
         body {
+            min-height: 100vh;
+            font-family: "Inter", "SF Pro Display", "Segoe UI", sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-strong);
+            padding: 32px clamp(16px, 4vw, 56px);
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px clamp(20px, 3vw, 32px);
+            border-radius: 28px;
+            background: rgba(10, 14, 32, 0.78);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand img {
+            width: clamp(46px, 5vw, 56px);
+            height: clamp(46px, 5vw, 56px);
+            border-radius: 16px;
+            object-fit: cover;
+            background: rgba(148, 163, 184, 0.06);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        .brand h1 {
+            font-size: clamp(1.25rem, 2vw, 1.6rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        nav a.active {
+            background: rgba(45, 212, 191, 0.16);
+            color: var(--text-strong);
+            box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.4);
+        }
+
+        nav a:hover {
+            color: var(--text-strong);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pill {
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(15, 22, 42, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pill strong {
+            font-weight: 600;
+            color: var(--text-strong);
+        }
+
+        .connect-btn {
+            padding: 12px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(45, 212, 191, 0.4);
+            color: var(--text-strong);
+            font-weight: 600;
+            background: linear-gradient(120deg, rgba(45, 212, 191, 0.25), rgba(107, 125, 246, 0.35));
+            box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.5);
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 20px 30px rgba(45, 212, 191, 0.15);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+            gap: clamp(24px, 3vw, 40px);
+            align-items: stretch;
+        }
+
+        .card {
+            background: var(--glass);
+            border-radius: 28px;
+            padding: clamp(24px, 3vw, 32px);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(107, 125, 246, 0.03));
+            mix-blend-mode: screen;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pair-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .pair-info h2 {
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
+            letter-spacing: -0.015em;
+        }
+
+        .pair-info span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chart-actions button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            color: var(--text-soft);
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chart-actions button.active {
+            background: rgba(45, 212, 191, 0.18);
+            color: var(--text-strong);
+            border-color: rgba(45, 212, 191, 0.4);
+        }
+
+        .chart-actions button:hover {
+            color: var(--text-strong);
+            border-color: rgba(107, 125, 246, 0.4);
+        }
+
+        .chart-canvas {
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(8, 13, 31, 0.85) 0%, rgba(12, 19, 40, 0.6) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.06);
+            padding: 24px;
+            position: relative;
+            min-height: clamp(320px, 42vw, 420px);
+        }
+
+        .chart-grid {
+            position: absolute;
+            inset: 24px;
+            background: linear-gradient(0deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+            background-size: 100% 40px, 60px 100%;
+            border-radius: 16px;
+            mask-image: linear-gradient(to top, transparent 0%, black 12%, black 88%, transparent 100%);
+        }
+
+        .chart-line {
+            position: absolute;
+            inset: 24px;
+            display: block;
+            border-radius: 16px;
+            background: url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80') center/cover;
+            filter: saturate(0.7) brightness(0.9) contrast(1.1);
+            mix-blend-mode: screen;
+            opacity: 0.65;
+        }
+
+        .chart-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric {
+            background: rgba(10, 15, 34, 0.7);
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .metric-change {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .swap-card {
+            background: var(--glass-soft);
+            border-radius: 28px;
+            padding: clamp(24px, 3vw, 32px);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        .swap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mode-toggle {
+            display: inline-flex;
+            padding: 6px;
+            border-radius: 14px;
+            background: rgba(15, 22, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        .mode-toggle button {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .mode-toggle button.active {
+            background: rgba(45, 212, 191, 0.16);
+            color: var(--text-strong);
+            box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.35);
+        }
+
+        .mode-toggle button:hover {
+            color: var(--text-strong);
+        }
+
+        .pro-pill {
+            padding: 8px 14px;
+            background: rgba(107, 125, 246, 0.18);
+            border-radius: 12px;
+            border: 1px solid rgba(107, 125, 246, 0.45);
+            color: #e0e7ff;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        .swap-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .input-field {
+            background: rgba(10, 15, 34, 0.8);
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            padding: 18px 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+        }
+
+        .input-field header {
+            background: none;
+            border: none;
+            box-shadow: none;
             padding: 0;
             align-items: flex-start;
-            padding-top: 80px;
         }
 
-        .container {
-            padding: 50px 35px 40px;
-            border-radius: 24px;
-            margin: 0 15px;
-            max-width: 100%;
+        .input-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 40px;
+        .input-info label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .input-amount {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .input-balance {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .token-select {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 14px;
+            background: rgba(15, 22, 42, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            cursor: pointer;
+        }
+
+        .token-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.4), rgba(107, 125, 246, 0.4));
+        }
+
+        .switch-btn {
+            width: 44px;
+            height: 44px;
             border-radius: 16px;
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            background: rgba(45, 212, 191, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            margin: -4px auto;
+            cursor: pointer;
+            color: var(--primary);
+            box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.2);
         }
 
-        .logo-placeholder {
-            font-size: 10px;
+        .swap-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
         }
 
-        h1 {
-            font-size: 40px;
-            margin-bottom: 60px;
+        .stat {
+            background: rgba(12, 17, 36, 0.75);
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        input {
-            padding: 18px 22px;
-            font-size: 15px;
-            border-radius: 10px;
+        .stat label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
-        button {
+        .stat strong {
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .stat span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .swap-btn {
+            width: 100%;
             padding: 18px;
-            font-size: 12px;
-            letter-spacing: 3.5px;
-            border-radius: 10px;
+            border-radius: 18px;
+            border: none;
+            background: linear-gradient(120deg, rgba(45, 212, 191, 0.25), rgba(107, 125, 246, 0.35));
+            color: var(--text-strong);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: 0.2s ease;
         }
 
-        .footer {
-            margin-top: 50px;
-            font-size: 10px;
-        }
-    }
-
-    @media (max-width: 380px) {
-        .container {
-            padding: 45px 30px 35px;
-            margin: 0 12px;
+        .swap-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 25px 45px rgba(45, 212, 191, 0.18);
         }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 50px;
+        .portfolio-preview {
+            background: rgba(11, 16, 35, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .logo {
-            width: 75px;
-            height: 75px;
-        }
-    }
-
-    /* Desktop große Bildschirme */
-    @media (min-width: 1024px) {
-        .container {
-            max-width: 450px;
-            padding: 70px 45px 50px;
+        .portfolio-preview h3 {
+            font-size: 0.95rem;
+            color: var(--text-soft);
         }
 
-        h1 {
-            font-size: 52px;
-            margin-bottom: 80px;
+        .portfolio-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
         }
 
-        .logo {
-            width: 95px;
-            height: 95px;
-            margin-bottom: 50px;
+        .portfolio-item span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
-    }
-</style>
+
+        .portfolio-item strong {
+            color: var(--text-strong);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(148, 163, 184, 0.6);
+            font-size: 0.8rem;
+            padding-bottom: 8px;
+        }
+
+        @media (max-width: 1080px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .swap-card {
+                order: -1;
+            }
+
+            body {
+                padding: 24px 16px 32px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .brand {
+                justify-content: center;
+            }
+
+            .header-actions {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .chart-actions {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .swap-card {
+                gap: 20px;
+            }
+
+            .swap-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .input-field {
+                grid-template-columns: 1fr;
+            }
+
+            .token-select {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .switch-btn {
+                margin: 0;
+                width: 100%;
+                height: 48px;
+                border-radius: 14px;
+            }
+
+            header {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="./rendex_logo.PNG" alt="Logo" class="logo">
+    <header>
+        <div class="brand">
+            <img src="./rendex_logo.PNG" alt="RendexFi Logo">
+            <h1>Rendex<span>Fi</span> Protocol</h1>
         </div>
-    <h1>
-        <span class="rendex">Rendex</span><span class="fi">Fi</span> <span class="beta">Beta</span>
-    </h1>
-    <form>
-        <div class="input-group">
-            <input type="email" placeholder="deine@gmail.com" required>
+        <nav>
+            <a href="#" class="active">Swap</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Pro</a>
+        </nav>
+        <div class="header-actions">
+            <div class="pill"><span>Netzwerk</span> <strong>Solana</strong></div>
+            <div class="pill"><span>Sprache</span> <strong>DE</strong></div>
+            <button class="connect-btn">Wallet verbinden</button>
         </div>
-        
-        <button type="submit">ZUGRIFF</button>
-    </form>
-    
-    <div class="footer">
-        2025 RendexFi. Alle Rechte vorbehalten
-    </div>
-</div>
+    </header>
+
+    <main>
+        <section class="card">
+            <div class="chart-header">
+                <div class="pair-info">
+                    <h2>SOL / USDT</h2>
+                    <span>Real-Time Orderflow · Tiefe Liquidität</span>
+                </div>
+                <div class="chart-actions">
+                    <button>1H</button>
+                    <button class="active">4H</button>
+                    <button>1D</button>
+                    <button>Indikatoren</button>
+                    <button>Einstellungen</button>
+                </div>
+            </div>
+            <div class="chart-canvas">
+                <div class="chart-grid"></div>
+                <div class="chart-line"></div>
+            </div>
+            <div class="chart-footer">
+                <div class="metric">
+                    <span class="metric-label">Letzter Preis</span>
+                    <span class="metric-value">$199.10</span>
+                    <span class="metric-change">+4.50% · 200.10 USDT</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">24h Volumen</span>
+                    <span class="metric-value">$325M</span>
+                    <span class="metric-change">+12.8% im Vergleich</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Funding Rate</span>
+                    <span class="metric-value">0.015%</span>
+                    <span class="metric-change">Nächstes Update: 3h</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Open Interest</span>
+                    <span class="metric-value">$1.1B</span>
+                    <span class="metric-change">+2.4% seit gestern</span>
+                </div>
+            </div>
+        </section>
+
+        <aside class="swap-card">
+            <div class="swap-header">
+                <div class="mode-toggle">
+                    <button class="active">Swap</button>
+                    <button>Portfolio</button>
+                </div>
+                <span class="pro-pill">PRO MODE</span>
+            </div>
+
+            <div class="swap-panel">
+                <div class="input-field">
+                    <div class="input-info">
+                        <label>Von</label>
+                        <span class="input-amount">2.00</span>
+                        <span class="input-balance">Balance: 18.42 SOL</span>
+                    </div>
+                    <div class="token-select">
+                        <div class="token-icon"></div>
+                        <strong>SOL</strong>
+                        <span>▼</span>
+                    </div>
+                </div>
+
+                <button class="switch-btn">⇅</button>
+
+                <div class="input-field">
+                    <div class="input-info">
+                        <label>Zu</label>
+                        <span class="input-amount">399.70</span>
+                        <span class="input-balance">Balance: 1,120.34 USDC</span>
+                    </div>
+                    <div class="token-select">
+                        <div class="token-icon" style="background: linear-gradient(135deg, rgba(107, 125, 246, 0.6), rgba(45, 212, 191, 0.4));"></div>
+                        <strong>USDC</strong>
+                        <span>▼</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swap-stats">
+                <div class="stat">
+                    <label>Handelsgebühr</label>
+                    <strong>0.10%</strong>
+                    <span>Beste Route via Phoenix DEX</span>
+                </div>
+                <div class="stat">
+                    <label>Gas Fee</label>
+                    <strong>0.00001 SOL</strong>
+                    <span>Optimiert durch RendexFi Router</span>
+                </div>
+                <div class="stat">
+                    <label>Portfolio Impact</label>
+                    <strong>+3.6%</strong>
+                    <span>Dein Risiko Level bleibt moderat</span>
+                </div>
+                <div class="stat">
+                    <label>Slippage</label>
+                    <strong>0.15%</strong>
+                    <span>Auto · Anpassbar bis 1%</span>
+                </div>
+            </div>
+
+            <button class="swap-btn">Swap ausführen</button>
+
+            <div class="portfolio-preview">
+                <h3>Portfolio Snapshot</h3>
+                <div class="portfolio-item">
+                    <span>SOL Position</span>
+                    <strong>32.50 SOL</strong>
+                </div>
+                <div class="portfolio-item">
+                    <span>Stablecoins</span>
+                    <strong>5,420 USDC</strong>
+                </div>
+                <div class="portfolio-item">
+                    <span>Gesamt PnL</span>
+                    <strong style="color: var(--primary);">+12.8%</strong>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        © 2025 RendexFi Protocol · DeFi neu gedacht für Swap, Perps & Portfolio Management
+    </footer>
 </body>
 </html>
