@@ -3,168 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>RendexFi Beta Access</title>
-  
-  <!-- UI-Leisten dunkel färben -->
-  <meta name="theme-color" content="#0a1525">
-  <meta name="theme-color" content="#0a1525" media="(prefers-color-scheme: dark)">
+  <title>RendexFi • Beta Access</title>
+  <meta name="theme-color" content="#070b18">
   <meta name="color-scheme" content="dark">
+  <link rel="icon" href="./rendex_logo.PNG" type="image/png">
 
-  <!-- iOS Statusbar (Safari / PWA) -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
-  <meta name="description" content="Frühen Zugang zur RendexFi Beta sichern. DeFi Tools, die wirklich performen." />
-  <meta property="og:title" content="RendexFi Beta Access" />
-  <meta property="og:description" content="Trag deine E-Mail ein und sichere dir frühen Zugang zur RendexFi Beta." />
-  <meta property="og:type" content="website" />
-
-  <!-- winziger Favicon-Data-URI, verhindert 404 -->
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAkMBgK6f7dUAAAAASUVORK5CYII=">
-
-  <style>
-    :root{
-      --bg1:#000814;--bg2:#001d3d;--bg3:#003566;--bg4:#006d77;--acc:#2dd4bf;
-      --panel:rgba(0,0,0,.6);--input:#1f2332;--inputFocus:#1a1e2e;
-      --text:#e5e7eb;--textMuted:#aab0c0;--placeholder:#6b7280;
-      --btnBg:#202437;--btnBgHover:#272c3e;--ring:#7dd3fc;
-      --ok:#34d399;--error:#ff6b6b;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --safe-top: env(safe-area-inset-top, 0px);
-    }
-
-    /* hidden-Attribut muss IMMER gewinnen */
-    [hidden]{ display:none !important; }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;min-height:100%}
-
-    body{
-      font-family: helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI","Inter", Roboto, sans-serif;
-      color:var(--text);
-      background: linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 30%,var(--bg3) 60%,var(--bg4) 85%,var(--acc) 100%);
-      min-height:100svh;               /* moderne iOS/Android */
-      min-height:-webkit-fill-available;/* älteres iOS */
-      display:flex;align-items:center;justify-content:center;
-      padding-bottom:var(--safe-bottom);
-      padding-top:var(--safe-top);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-      overflow-x:hidden;
-      background-attachment:fixed;
-    }
-
-    .container{
-      background:var(--panel);
-      border-radius:24px;
-      width:100%;max-width:460px;
-      padding:60px 40px 44px;
-      box-shadow:0 20px 60px rgba(0,0,0,.35);
-      margin:20px;
-    }
-
-    /* Logo (128×128 Quelle, gerendert responsiv) */
-    .logo-wrap{display:flex;justify-content:center;margin-bottom:24px}
-    .logo, .logo-fallback{
-      width:96px;height:96px;border-radius:18px;
-    }
-    .logo{
-      display:block;object-fit:contain;
-      background: radial-gradient(120px 60px at 50% 50%, rgba(45,212,191,.15), transparent 70%);
-    }
-    .logo-fallback{
-      display:grid;place-items:center;background:#0b1220;
-      border:1px solid rgba(255,255,255,.07);color:#7dd3fc;font-weight:700;letter-spacing:.2px;
-    }
-
-    h1{ text-align:center;font-size:48px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px;}
-    .rendex{color:#001d3d}
-    .fi,.beta{color:var(--acc)}
-    .subtitle{ text-align:center;color:var(--textMuted);font-size:14px;margin-bottom:18px;}
-
-    /* Socials */
-    .socials{ display:flex;justify-content:center;gap:16px;margin-bottom:22px;}
-    .socials a{
-      display:inline-flex;width:32px;height:32px;border-radius:10px;
-      align-items:center;justify-content:center;text-decoration:none;
-      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
-      transition:transform .15s ease, background .15s ease;
-    }
-    .socials a:hover{ transform:translateY(-1px); background:rgba(255,255,255,.10) }
-    .socials svg{ width:16px;height:16px;fill:#d1d5db }
-
-    form{display:block}
-    .field{margin-bottom:12px}
-    label{ display:block;font-size:13px;color:#c1c6d6;margin:0 0 8px 2px }
-
-    input[type="email"]{
-      width:100%;padding:16px 18px;background:var(--input);
-      border-radius:12px;border:1px solid transparent;color:#e5e7eb;font-size:16px;
-    }
-    input::placeholder{color:var(--placeholder);font-style:italic}
-    input:focus{
-      background:var(--inputFocus);outline:none;border-color:var(--ring);
-      box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 28%, transparent);
-    }
-
-    .consent{
-      display:flex;gap:10px;align-items:flex-start;margin-top:8px;
-      font-size:12px;color:#aeb4c2;line-height:1.45;
-    }
-    .consent input{margin-top:3px}
-    .consent a{color:var(--acc);text-decoration:none}
-    .consent a:hover{text-decoration:underline}
-
-    button{
-      width:100%;padding:16px;margin-top:14px;border:0;border-radius:12px;
-      background:var(--btnBg);color:#f3f4f6;font-weight:800;font-size:13px;
-      letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
-      transition:transform .15s ease, background .15s ease, opacity .15s ease;
-    }
-    button:hover{ background:var(--btnBgHover); transform:translateY(-1px) }
-    button:active{ transform:translateY(0) }
-    button:disabled{ opacity:.6; cursor:not-allowed }
-
-    .status{ min-height:22px;margin-top:10px;font-size:13px }
-    .status.error{ color:var(--error) }
-    .status.success{ color:var(--ok) }
-
-    .footer{ text-align:center;margin-top:32px;color:#8a90a3;font-size:11px; }
-    .footer a{ color:var(--acc); text-decoration:none }
-    .footer a:hover{ text-decoration:underline }
-
-    @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
-    @media (max-width:600px){
-      .container{ padding:52px 28px 36px;margin:0 16px }
-      h1{ font-size:40px }
-      .logo,.logo-fallback{ width:88px;height:88px }
-    }
-    @media (max-width:380px){
-      .container{ padding:44px 22px 30px }
-      h1{ font-size:36px }
-      .logo,.logo-fallback{ width:80px;height:80px }
-    }
-  </style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
   <main class="container">
-    <!-- Logo 128×128 Quelle; Fallback nur, wenn Bild fehlt -->
-    <div class="logo-wrap">
-      <img id="logo"
-           src="./rendex_logo.PNG?v=2"
-           alt="RendexFi Logo"
-           class="logo"
-           width="128" height="128"
-           decoding="async"
-           onload="document.getElementById('logo-fallback').hidden=true"
-           onerror="this.hidden=true;document.getElementById('logo-fallback').hidden=false" />
-      <div id="logo-fallback" class="logo-fallback" hidden>RF</div>
-    </div>
+    <img src="./rendex_logo.PNG" alt="RendexFi Logo" class="logo" width="88" height="88">
 
-    <h1><span class="rendex">Rendex</span><span class="fi">Fi</span> <span class="beta">Beta</span></h1>
-    <p class="subtitle">Trag deine E-Mail ein und erfahre als Erste*r, wenn die Beta live geht. Double-Opt-in – jederzeit abmeldbar.</p>
+    <h1>Rendex<span class="fi">Fi</span> <span class="beta">Beta</span></h1>
+    <p class="subtitle">
+      Trag deine E-Mail ein und erfahre als Erste*r, wenn die Beta live geht.  
+      Double-Opt-in – jederzeit abmeldbar.
+    </p>
 
-    <div class="socials" aria-label="RendexFi Social Media">
+    <div class="socials">
       <a href="https://instagram.com/rendexfi" target="_blank" rel="noopener" aria-label="Instagram @rendexfi">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18.5 6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18.5 6z"/></svg>
       </a>
@@ -177,20 +34,13 @@
     </div>
 
     <form id="betaForm" novalidate>
-      <div class="field">
-        <label for="email">E-Mail</label>
-        <input id="email" name="email" type="email" placeholder="deine@gmail.com" required autocomplete="email" inputmode="email" />
-      </div>
-
-      <!-- Honeypot -->
-      <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
-        <label for="company">Company</label>
-        <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
-      </div>
+      <label for="email">E-Mail</label>
+      <input id="email" name="email" type="email" placeholder="deine@gmail.com" required />
 
       <label class="consent">
-        <input type="checkbox" id="consent" name="consent" required />
-        <span>Ich willige ein, dass die RendexFi Protocol UG (haftungsbeschränkt) meine E-Mail zum Versand von Beta-Updates verarbeitet. Infos in der <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>. Widerruf jederzeit möglich.</span>
+        <input type="checkbox" id="consent" required>
+        <span>Ich willige ein, dass RendexFi meine E-Mail zum Versand von Beta-Updates verarbeitet.  
+          Infos in der <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a>.</span>
       </label>
 
       <button type="submit" id="submitBtn">Zugriff sichern</button>
@@ -198,50 +48,33 @@
     </form>
 
     <div class="footer">
-      © 2025 RendexFi Protocol. Alle Rechte vorbehalten ·
-      <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+      © 2025 RendexFi Protocol · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
     </div>
   </main>
 
   <script>
-    // Mini Submit-Handler (Backend später anpassen)
-    (function(){
-      const form = document.getElementById('betaForm');
-      const email = document.getElementById('email');
-      const consent = document.getElementById('consent');
-      const hp = document.getElementById('company');
-      const statusEl = document.getElementById('status');
-      const btn = document.getElementById('submitBtn');
-
-      function showStatus(msg, type){
-        statusEl.textContent = msg;
-        statusEl.className = 'status ' + (type || '');
-      }
-
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        showStatus('', '');
-        if(hp.value){ return; } // Bot Honeypot
-        if(!email.validity.valid){ showStatus('Bitte gib eine gültige E-Mail an.', 'error'); email.focus(); return; }
-        if(!consent.checked){ showStatus('Bitte stimme der Verarbeitung zu.', 'error'); consent.focus(); return; }
-
-        btn.disabled = true; btn.textContent = 'Sende ...';
-        try{
-          // 👉 passe diese URL an deinen echten Endpoint an
-          const res = await fetch('/api/subscribe', {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ email: email.value })
-          });
-          if(!res.ok){ throw new Error(await res.text() || 'Serverfehler'); }
-          showStatus('Fast geschafft! Bestätige die E-Mail (Double-Opt-in).', 'success');
-          form.reset();
-        }catch(err){
-          console.error(err);
-          showStatus('Upps – etwas ist schiefgelaufen. Versuch es später erneut.', 'error');
-        }finally{
-          btn.disabled = false; btn.textContent = 'Zugriff sichern';
-        }
-      });
-    })();
+    const form=document.getElementById('betaForm');
+    const email=document.getElementById('email');
+    const consent=document.getElementById('consent');
+    const statusEl=document.getElementById('status');
+    const btn=document.getElementById('submitBtn');
+    const showStatus=(msg,type)=>{statusEl.textContent=msg;statusEl.className='status '+(type||'');};
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();showStatus('');
+      if(!email.validity.valid)return showStatus('Bitte gültige E-Mail eingeben.','error');
+      if(!consent.checked)return showStatus('Bitte Zustimmung erteilen.','error');
+      btn.disabled=true;btn.textContent='Sende...';
+      try{
+        const r=await fetch('./api/subscribe', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ email: email.value })
+        });
+        if(!r.ok)throw new Error();
+        showStatus('Fast geschafft! Bitte E-Mail bestätigen.','success');form.reset();
+      }catch{showStatus('Fehler – bitte später erneut versuchen.','error');}
+      finally{btn.disabled=false;btn.textContent='Zugriff sichern';}
+    });
   </script>
 </body>
+</html>
