@@ -1,12 +1,12 @@
 {
-  "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "beta.html", "use": "@vercel/static" },
-    { "src": "style.css", "use": "@vercel/static" },
-    { "src": "rendex_logo.PNG", "use": "@vercel/static" }
-  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/beta.html" }
+    { "src": "/(.*\\.css)", "dest": "/$1" },
+    { "src": "/(.*\\.png)", "dest": "/$1" },
+    { "src": "/(.*\\.jpg)", "dest": "/$1" },
+    { "src": "/(.*\\.jpeg)", "dest": "/$1" },
+    { "src": "/(.*\\.svg)", "dest": "/$1" },
+    { "src": "/(.*\\.ico)", "dest": "/$1" },
+    { "src": "/", "dest": "/beta.html" }
   ]
 }
