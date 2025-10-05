@@ -1,14 +1,9 @@
 {
-  "name": "rendexfi-beta",
+  "name": "rendexfi-protocol",
   "version": "1.0.0",
   "type": "module",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "build": "echo 'Static build for Vercel'"
   },
-  "dependencies": {
-    "express": "^4.18.2",
-    "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2"
-  }
+  "dependencies": {}
 }
